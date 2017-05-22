@@ -1,0 +1,15 @@
+{
+  "name"       : "Gaboot",
+  "alias"      : "gaboot",
+  "description": "",
+  "keywords"   : [],
+  "active"     : 1,
+  "order"      : 0,
+  "providers"  : [
+    "App\\Components\\Gaboot\\Providers\\GabootServiceProvider"
+  ],
+  "aliases"    : {},
+  "files"      : [
+    "start.php"
+  ]
+}
