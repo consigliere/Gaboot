@@ -23,6 +23,8 @@ class GabootServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+
+        $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');
     }
 
     /**
@@ -32,13 +34,8 @@ class GabootServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\App\Components\AppFoundation\Providers\AppFoundationServiceProvider::class);
-
-        // register voyagers
-        $this->app->register(\TCG\Voyager\VoyagerServiceProvider::class);
-
-        // register passport
-        $this->app->register(\Laravel\Passport\PassportServiceProvider::class);
+        $this->app->register(\App\Components\Signature\Providers\SignatureServiceProvider::class);
+        $this->app->register(\App\Components\Siegnor\Providers\SiegnorServiceProvider::class);
     }
 
     /**
@@ -50,7 +47,7 @@ class GabootServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../../Config/config.php' => config_path('gaboot.php'),
-        ]);
+        ], 'config-gaboot');
         $this->mergeConfigFrom(
             __DIR__ . '/../../Config/config.php', 'gaboot'
         );
@@ -71,7 +68,7 @@ class GabootServiceProvider extends ServiceProvider
             $sourcePath => $viewPath,
         ]);
 
-        $this->loadViewsFrom(array_merge(array_map(function($path) {
+        $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/components/gaboot';
         }, \Config::get('view.paths')), [$sourcePath]), 'gaboot');
     }
