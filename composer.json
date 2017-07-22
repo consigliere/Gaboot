@@ -13,8 +13,7 @@
     }
   },
   "require"    : {
-    "consigliere/appfoundation": "0.1.*",
-    "tcg/voyager"              : "0.11.*",
-    "laravel/passport"         : "^2.0"
+    "consigliere/signature": "0.2.*",
+    "consigliere/siegnor"  : "0.3.*"
   }
 }
