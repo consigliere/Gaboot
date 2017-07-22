@@ -28,7 +28,9 @@ class GabootController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
      * @param  Request $request
+     *
      * @return Response
      */
     public function store(Request $request)
@@ -46,7 +48,9 @@ class GabootController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
      * @param  Request $request
+     *
      * @return Response
      */
     public function update(Request $request)
@@ -59,10 +63,5 @@ class GabootController extends Controller
      */
     public function destroy()
     {
-    }
-
-    public function oauth2() 
-    {
-        return view('gaboot::oauth2');
     }
 }
